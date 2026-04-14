@@ -1,5 +1,3 @@
-import com.android.build.api.dsl.ApplicationExtension
-
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.plugin.compose")
@@ -7,14 +5,19 @@ plugins {
     id("dagger.hilt.android.plugin")
 }
 
-extensions.configure<ApplicationExtension> {
+android {
+    compileSdk {
+        version = release(36) {
+            minorApiLevel = 1
+        }
+    }
+
     namespace = "com.example.stopwatch"
-    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.example.stopwatch"
-        minSdk = 21
-        targetSdk = 36
+        minSdk = 23
+        targetSdk = 37
         versionCode = 1
         versionName = "1.0"
 
@@ -29,8 +32,8 @@ extensions.configure<ApplicationExtension> {
         release {
             isMinifyEnabled = false
             proguardFiles(
-                    getDefaultProguardFile("proguard-android-optimize.txt"),
-                    "proguard-rules.pro"
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
             )
         }
     }

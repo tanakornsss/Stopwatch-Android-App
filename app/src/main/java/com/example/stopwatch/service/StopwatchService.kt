@@ -6,6 +6,7 @@ import android.app.Service
 import android.content.Intent
 import android.os.Binder
 import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.runtime.mutableStateOf
 import androidx.core.app.NotificationCompat
@@ -126,6 +127,7 @@ class StopwatchService : Service() {
         startForeground(NOTIFICATION_ID, notificationBuilder.build())
     }
 
+    @RequiresApi(Build.VERSION_CODES.N)
     private fun stopForegroundService() {
         notificationManager.cancel(NOTIFICATION_ID)
         stopForeground(STOP_FOREGROUND_REMOVE)
