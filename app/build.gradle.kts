@@ -3,8 +3,8 @@ import com.android.build.api.dsl.ApplicationExtension
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.plugin.compose")
-//    id("kotlin-kapt")
-//    id("dagger.hilt.android.plugin")
+    id("com.google.devtools.ksp")
+    id("dagger.hilt.android.plugin")
 }
 
 extensions.configure<ApplicationExtension> {
@@ -56,7 +56,6 @@ extensions.configure<ApplicationExtension> {
 }
 
 dependencies {
-
     implementation("androidx.core:core-ktx:1.18.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.10.0")
     implementation("androidx.activity:activity-compose:1.13.0")
@@ -74,6 +73,6 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-test-manifest:1.10.6")
 
     // Dagger - Hilt
-//    implementation("com.google.dagger:hilt-android:2.59.2")
-//    kapt("com.google.dagger:hilt-android-compiler:2.59.2")
+    implementation("com.google.dagger:hilt-android:2.59.2")
+    ksp("com.google.dagger:hilt-android-compiler:2.59.2")
 }
